@@ -1,0 +1,17 @@
+import express from "express";
+import isAuthenticated from "../middlewares/isAuthenticated.js";
+import {
+  getAdminJobs,
+  getAllJobs,
+  getJobById,
+  postJob,
+} from "../controllers/job.controller.js";
+
+const router = express.Router();
+
+router.route("/postJob").post(isAuthenticated, postJob);
+router.route("/getAllJobs").get(isAuthenticated, getAllJobs);
+router.route("/getAdminJobs").get(isAuthenticated, getAdminJobs);
+router.route("/getJob/:id").get(isAuthenticated, getJobById);
+
+export default router;
