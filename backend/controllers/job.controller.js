@@ -59,6 +59,8 @@ export const getAllJobs = async (req, res) => {
     const keyword = req.query.keyword || "";
     const query = {
       $or: [
+        //options "i" means case insensitive
+        //regex means pattern matching
         { title: { $regex: keyword, $options: "i" } },
         { description: { $regex: keyword, $options: "i" } },
       ],
