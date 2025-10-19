@@ -153,17 +153,11 @@ export const updateProfile = async (req, res) => {
     const { fullname, email, phoneNumber, bio, skills } = req.body;
 
     const file = req.file;
-    // cloudinary  idhar
+    // cloudinary ayega idhar
     const fileUri = getDataUri(file);
-    const cloudResponse = await cloudinary.uploader.upload(fileUri.content, {
-      resource_type: "raw",
-      use_filename: true,
-      unique_filename: false,
-      folder: "pdfs", // optional
-      flags: "attachment:false",
-      type: "upload",
-    });
-    console.log(cloudResponse);
+    // console.log(fileUri.content);
+    const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+    // console.log(cloudResponse);
 
     let skillsArray;
     if (skills) {
